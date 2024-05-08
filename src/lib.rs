@@ -14,6 +14,8 @@ use yew_router::prelude::*;
 use components::chat::Chat;
 use components::login::Login;
 
+use crate::components::additional_page::AdditionalPage;
+use crate::Route as MyRoute;
 // When the `wee_alloc` feature is enabled, this uses `wee_alloc` as the global
 // allocator.
 //
@@ -28,6 +30,8 @@ pub enum Route {
     Login,
     #[at("/chat")]
     Chat,
+    #[at("/additional")]
+    AdditionalPage, 
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -63,6 +67,7 @@ fn switch(selected_route: &Route) -> Html {
     match selected_route {
         Route::Login => html! {<Login />},
         Route::Chat => html! {<Chat/>},
+        Route::AdditionalPage => html! {<AdditionalPage />},
         Route::NotFound => html! {<h1>{"404 baby"}</h1>},
     }
 }
